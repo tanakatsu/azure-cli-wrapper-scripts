@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# You need to login by `az login`
+
 alias azure-start='az vm start --resource-group ${resourceGroup} --name ${vmName} && export instanceId=`az vm list-ip-addresses --name ${vmName} | jq .[].virtualMachine.network.publicIpAddresses[0].ipAddress | tr -d \"`;echo $instanceId'
 alias azure-stop='az vm stop --resource-group ${resourceGroup} --name ${vmName} && az vm deallocate --resource-group ${resourceGroup} --name ${vmName}'
 #alias azure-ssh='ssh -i ${privateKeyPath} ubuntu@${instanceId}'
